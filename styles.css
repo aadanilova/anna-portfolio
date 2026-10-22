@@ -507,6 +507,11 @@ h4 {
   letter-spacing: -0.01em;
 }
 
+.hero__role-line {
+  display: block;
+  white-space: nowrap;
+}
+
 .hero__spec {
   margin-top: 1.25rem;
   color: var(--accent);
