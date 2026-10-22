@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Анна — графический дизайнер: мерч, упаковка, промопродукция</title>
+  <meta name="description" content="Портфолио графического дизайнера Анны: мерч и промопродукция для корпоративных клиентов, дизайн упаковки, POS-материалы и карточки для маркетплейсов.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#faf8f5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121110" media="(prefers-color-scheme: dark)">
+
+  <!-- Абсолютные адреса нужны только для превью в соцсетях. Если адрес сайта другой, замените в canonical, og:url и og:image. -->
+  <link rel="canonical" href="https://hlwktt.github.io/anna-portfolio/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:title" content="Анна — графический дизайнер">
+  <meta property="og:description" content="Мерч, упаковка, промопродукция, POS-материалы и карточки для маркетплейсов.">
+  <meta property="og:url" content="https://hlwktt.github.io/anna-portfolio/">
+  <meta property="og:image" content="https://hlwktt.github.io/anna-portfolio/assets/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Unbounded:wght@500;700&display=swap">
+  <link rel="stylesheet" href="styles.css">
+
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержанию</a>
+
+  <header class="site-header" data-header>
+    <div class="container header-inner">
+      <a class="logo" href="#top" aria-label="Анна, графический дизайнер — в начало страницы">Анна<span aria-hidden="true">.</span></a>
+      <nav class="nav" aria-label="Основная навигация">
+        <ul class="nav-list">
+          <li><a href="#works">Работы</a></li>
+          <li><a href="#skills">Навыки</a></li>
+          <li><a href="#experience">Опыт</a></li>
+          <li><a class="nav-cta" href="#contact">Связаться</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- 1. Hero -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <p class="eyebrow hero-line" style="--i:0">Портфолио · удалённо</p>
+          <!-- TODO: при желании добавить фамилию -->
+          <h1 class="hero-title" id="hero-title">
+            <span class="hero-line" style="--i:1">Анна</span>
+            <span class="hero-role hero-line" style="--i:2">Графический дизайнер</span>
+          </h1>
+          <p class="hero-spec hero-line" style="--i:3">мерч <span aria-hidden="true">·</span> упаковка <span aria-hidden="true">·</span> промо</p>
+          <p class="hero-lead hero-line" style="--i:4">Веду проект от брифа до производства: мудборды и эскизы, презентация концепции, макеты нанесения и мокапы, сборка файлов под технологию.</p>
+          <div class="hero-actions hero-line" style="--i:5">
+            <a class="btn btn--primary" href="#works">Смотреть работы <span class="btn-arrow" aria-hidden="true">→</span></a>
+            <a class="btn btn--ghost" href="#contact">Связаться</a>
+          </div>
+        </div>
+
+        <div class="hero-art" aria-hidden="true">
+          <div class="shape shape--box"></div>
+          <div class="shape shape--ring"></div>
+          <div class="shape shape--pill"></div>
+          <div class="shape shape--dot"></div>
+          <span class="chip chip--1">мерч</span>
+          <span class="chip chip--2">упаковка</span>
+          <span class="chip chip--3">промо</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Цифры -->
+    <section class="section stats" aria-labelledby="stats-title">
+      <div class="container">
+        <h2 class="visually-hidden" id="stats-title">Результаты в цифрах</h2>
+        <ul class="stats-grid" data-stagger>
+          <li class="stat reveal">
+            <p class="stat-num" data-count="40" data-suffix="+">40+</p>
+            <p class="stat-label">концепций мерча по ТЗ клиентов запущены в производство</p>
+          </li>
+          <li class="stat reveal">
+            <p class="stat-num" data-count="70" data-prefix="~" data-suffix="%">~70%</p>
+            <p class="stat-label">предложенных концепций одобрены заказчиками</p>
+          </li>
+          <li class="stat reveal">
+            <p class="stat-num" data-count="200" data-suffix="+">200+</p>
+            <p class="stat-label">адаптаций упаковки на линейки SKU без возвратов из типографии</p>
+          </li>
+          <li class="stat reveal">
+            <p class="stat-num" data-count="40" data-suffix="+">40+</p>
+            <p class="stat-label">проектов для 8 заказчиков на фрилансе, с 5 из них — регулярное сотрудничество</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. Избранные работы -->
+    <!--
+      NDA: публикация материалов клиентов (названия, изображения, макеты) требует проверки NDA
+      и согласования с заказчиком/работодателем. Проекты подаются как «проекты, над которыми я работала»,
+      а не как публичные кейсы.
+    -->
+    <section class="section works" id="works" aria-labelledby="works-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Избранные работы</p>
+          <h2 class="section-title" id="works-title">Проекты, над которыми я работала</h2>
+          <p class="section-lead">Мерч, упаковка и промопродукция для корпоративных и государственных заказчиков, а также проектная работа для продавцов на маркетплейсах. Нажмите на карточку, чтобы открыть подробности.</p>
+        </header>
+
+        <ul class="cases" data-stagger>
+          <!-- Газпромбанк -->
+          <li class="reveal">
+            <article class="case" data-tilt>
+              <div class="case-media" style="--ph-hue: 215">
+                <span class="ph-label" aria-hidden="true">Газпромбанк</span>
+                <img src="assets/works/gazprombank.jpg" width="1600" height="1000" loading="lazy" decoding="async" alt="Дерево в горшке из деталей конструктора с логотипом Газпромбанка" onerror="this.remove()">
+              </div>
+              <div class="case-body">
+                <p class="case-type">Мерч · H-ONE</p>
+                <h3 class="case-title"><button class="case-open" type="button" aria-haspopup="dialog">Газпромбанк: конструктор, настольная игра, рюкзаки</button></h3>
+                <dl class="case-meta">
+                  <div><dt>Роль</dt><dd>Графический дизайнер: дизайн продукта и упаковки</dd></div>
+                  <div><dt>Инструменты</dt><dd>Illustrator, Photoshop</dd></div>
+                </dl>
+              </div>
+              <template class="case-details">
+                <p>Брендированный мерч для банка: полная разработка дизайна конструктора (аналог LEGO), дизайн коробки для настольной игры и дизайн мерч-рюкзаков.</p>
+                <ul class="modal-list">
+                  <li>Конструктор — полная разработка дизайна</li>
+                  <li>Коробка для настольной игры</li>
+                  <li>Мерч-рюкзаки</li>
+                </ul>
+                <div class="modal-gallery">
+                  <img src="assets/works/gazprombank-01.jpg" width="672" height="910" loading="lazy" decoding="async" alt="Брендированный конструктор Газпромбанка: дерево из деталей в синем горшке с логотипом" onerror="this.remove()">
+                  <!-- TODO: добавить assets/works/gazprombank-02.jpg (коробка настольной игры) и gazprombank-03.jpg (рюкзаки) -->
+                </div>
+              </template>
+            </article>
+          </li>
+
+          <!-- Uniel -->
+          <li class="reveal">
+            <article class="case" data-tilt>
+              <div class="case-media" style="--ph-hue: 150">
+                <span class="ph-label" aria-hidden="true">Uniel · чай</span>
+                <img src="assets/works/uniel-tea.jpg" width="1600" height="1000" loading="lazy" decoding="async" alt="Линейка упаковок для чая Uniel" onerror="this.remove()">
+              </div>
+              <div class="case-body">
+                <p class="case-type">Упаковка · H-ONE</p>
+                <h3 class="case-title"><button class="case-open" type="button" aria-haspopup="dialog">Uniel: линейка упаковок для чая</button></h3>
+                <dl class="case-meta">
+                  <div><dt>Роль</dt><dd>Графический дизайнер: дизайн линейки</dd></div>
+                  <div><dt>Инструменты</dt><dd>Illustrator, Photoshop</dd></div>
+                </dl>
+              </div>
+              <template class="case-details">
+                <p>Дизайн линейки упаковок для чая для компании Uniel.</p>
+                <!-- TODO: добавить описание задачи и изображения assets/works/uniel-tea-01.jpg и далее -->
+              </template>
+            </article>
+          </li>
+
+          <!-- Комплекс градостроительной политики и строительства Москвы -->
+          <li class="reveal">
+            <article class="case" data-tilt>
+              <div class="case-media" style="--ph-hue: 35">
+                <span class="ph-label" aria-hidden="true">Коты-строители</span>
+                <img src="assets/works/moscow-cats.jpg" width="1600" height="1000" loading="lazy" decoding="async" alt="Статуэтки в виде котов в строительной экипировке" onerror="this.remove()">
+              </div>
+              <div class="case-body">
+                <p class="case-type">Сувенирная продукция · H-ONE</p>
+                <h3 class="case-title"><button class="case-open" type="button" aria-haspopup="dialog">Статуэтки «Коты в строительной экипировке»</button></h3>
+                <dl class="case-meta">
+                  <div><dt>Роль</dt><dd>Графический дизайнер: дизайн статуэток</dd></div>
+                  <div><dt>Инструменты</dt><dd>Illustrator, Photoshop</dd></div>
+                </dl>
+              </div>
+              <template class="case-details">
+                <p>Дизайн статуэток в виде котов в строительной экипировке для Комплекса градостроительной политики и строительства города Москвы.</p>
+                <!-- TODO: добавить изображения assets/works/moscow-cats-01.jpg и далее -->
+              </template>
+            </article>
+          </li>
+
+          <!-- F6 -->
+          <li class="reveal">
+            <article class="case" data-tilt>
+              <div class="case-media" style="--ph-hue: 350">
+                <span class="ph-label" aria-hidden="true">F6 · Новый год</span>
+                <img src="assets/works/f6-candles.jpg" width="1600" height="1000" loading="lazy" decoding="async" alt="Новогодние сувенирные подсвечники и подставки для F6" onerror="this.remove()">
+              </div>
+              <div class="case-body">
+                <p class="case-type">Сувенирная продукция · H-ONE</p>
+                <h3 class="case-title"><button class="case-open" type="button" aria-haspopup="dialog">F6: новогодние подсвечники и подставки</button></h3>
+                <dl class="case-meta">
+                  <div><dt>Роль</dt><dd>Графический дизайнер: дизайн сувенирной продукции</dd></div>
+                  <div><dt>Инструменты</dt><dd>Illustrator, Photoshop</dd></div>
+                </dl>
+              </div>
+              <template class="case-details">
+                <p>Новогодняя сувенирная продукция для F6: подсвечники и подставки.</p>
+                <!-- TODO: добавить изображения assets/works/f6-candles-01.jpg и далее -->
+              </template>
+            </article>
+          </li>
+
+          <!-- Новогодние концепции мерча -->
+          <!-- TODO: уточнить заказчика, роль и инструменты. На изображениях бренд «Честный знак», которого нет в резюме; проверить NDA перед публикацией. -->
+          <li class="reveal">
+            <article class="case" data-tilt>
+              <div class="case-media" style="--ph-hue: 48">
+                <span class="ph-label" aria-hidden="true">Новогодний мерч</span>
+                <img src="assets/works/new-year-merch.jpg" width="1600" height="1000" loading="lazy" decoding="async" alt="Три музыкальные шкатулки из деталей конструктора: звезда, паровоз и ёлка" onerror="this.remove()">
+              </div>
+              <div class="case-body">
+                <p class="case-type">Концепции мерча</p>
+                <h3 class="case-title"><button class="case-open" type="button" aria-haspopup="dialog">Новогодний мерч: шкатулки и ёлочные игрушки</button></h3>
+                <dl class="case-meta">
+                  <div><dt>Роль</dt><dd>Графический дизайнер</dd></div>
+                  <div><dt>Инструменты</dt><dd><span class="todo">TODO: уточнить</span></dd></div>
+                </dl>
+              </div>
+              <template class="case-details">
+                <p>Концепции новогоднего брендированного мерча: музыкальные шкатулки из деталей конструктора и ёлочные игрушки.</p>
+                <p class="todo">TODO: описание задачи и роли</p>
+                <div class="modal-gallery">
+                  <img src="assets/works/new-year-merch-01.jpg" width="1600" height="702" loading="lazy" decoding="async" alt="Музыкальные шкатулки из деталей конструктора: звезда, паровоз и ёлка с подарками" onerror="this.remove()">
+                  <img src="assets/works/new-year-merch-02.jpg" width="1518" height="1088" loading="lazy" decoding="async" alt="Шесть ёлочных игрушек в жёлто-серой гамме: бутылка, носок, лошадка, шапка-ушанка, рожок мороженого и банка икры" onerror="this.remove()">
+                </div>
+              </template>
+            </article>
+          </li>
+
+          <!-- Маркетплейсы -->
+          <!-- TODO: уточнить, что именно сделано на этих изображениях (генерация, ретушь, подготовка для карточек) -->
+          <li class="reveal">
+            <article class="case" data-tilt>
+              <div class="case-media" style="--ph-hue: 270">
+                <span class="ph-label" aria-hidden="true">Маркетплейсы</span>
+                <img src="assets/works/marketplaces.jpg" width="1600" height="1000" loading="lazy" decoding="async" alt="Три фотографии моделей в одежде на светлом фоне для карточек товаров" onerror="this.remove()">
+              </div>
+              <div class="case-body">
+                <p class="case-type">Маркетплейсы · фриланс</p>
+                <h3 class="case-title"><button class="case-open" type="button" aria-haspopup="dialog">Карточки товаров и адаптации упаковки</button></h3>
+                <dl class="case-meta">
+                  <div><dt>Роль</dt><dd>Графический дизайнер, проектная работа</dd></div>
+                  <div><dt>Инструменты</dt><dd>Photoshop, Illustrator</dd></div>
+                </dl>
+              </div>
+              <template class="case-details">
+                <p>Проектная работа для производителей и продавцов на Wildberries, Ozon и Яндекс Маркете.</p>
+                <ul class="modal-list">
+                  <li>Карточки товаров и инфографика</li>
+                  <li>Ретушь, цветокоррекция и подготовка изображений для упаковки и рекламы</li>
+                  <li>Более 200 адаптаций упаковки по мастер-макету на линейки SKU, вкусы и форматы — без возвратов из типографии</li>
+                </ul>
+                <div class="modal-gallery modal-gallery--grid">
+                  <img src="assets/works/marketplaces-01.jpg" width="788" height="1400" loading="lazy" decoding="async" alt="Модель в белом платье, кожаной куртке и с сумкой в форме сердца" onerror="this.remove()">
+                  <img src="assets/works/marketplaces-02.jpg" width="932" height="1400" loading="lazy" decoding="async" alt="Модель в брючном костюме цвета тауп и белой майке" onerror="this.remove()">
+                  <img src="assets/works/marketplaces-03.jpg" width="1038" height="1400" loading="lazy" decoding="async" alt="Модель в белом костюме, бордовом корсете и с бордовой сумкой" onerror="this.remove()">
+                  <img src="assets/works/marketplaces-04.jpg" width="1050" height="1400" loading="lazy" decoding="async" alt="Модель в коричневом трикотажном кардигане на молнии и чёрной плиссированной юбке" onerror="this.remove()">
+                  <img src="assets/works/marketplaces-05.jpg" width="864" height="1400" loading="lazy" decoding="async" alt="Модель в бежевом лонгсливе и джинсах на барном стуле" onerror="this.remove()">
+                  <img src="assets/works/marketplaces-06.jpg" width="1191" height="1321" loading="lazy" decoding="async" alt="Модель в клетчатой рубашке, джинсовых шортах и солнцезащитных очках" onerror="this.remove()">
+                </div>
+              </template>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 4. Навыки и инструменты -->
+    <section class="section skills" id="skills" aria-labelledby="skills-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Навыки и инструменты</p>
+          <h2 class="section-title" id="skills-title">Учитываю производство уже на этапе макета</h2>
+        </header>
+
+        <ul class="skills-grid" data-stagger>
+          <li class="skill reveal"><span class="skill-mark" aria-hidden="true">Ai</span>Adobe Illustrator</li>
+          <li class="skill reveal"><span class="skill-mark" aria-hidden="true">Ps</span>Adobe Photoshop</li>
+          <li class="skill reveal"><span class="skill-mark" aria-hidden="true">Id</span>Adobe InDesign</li>
+          <li class="skill reveal"><span class="skill-mark" aria-hidden="true">Fg</span>Figma</li>
+          <li class="skill reveal"><span class="skill-mark" aria-hidden="true">CMYK</span>Допечатная подготовка<small>цветовые профили, вылеты, спецкраски, сборка файлов</small></li>
+          <li class="skill reveal"><span class="skill-mark" aria-hidden="true">УФ</span>Технологии нанесения<small>УФ-печать, гравировка, вышивка</small></li>
+        </ul>
+
+        <ul class="tags reveal" aria-label="Компетенции">
+          <li>Дизайн упаковки</li>
+          <li>Дизайн мерча</li>
+          <li>POS-материалы</li>
+          <li>Дизайн для маркетплейсов</li>
+          <li>Инфографика</li>
+          <li>Мудборды и эскизы</li>
+          <li>Мокапы</li>
+          <li>Работа с брендбуком</li>
+          <li>Ретушь и цветокоррекция</li>
+          <li>Работа с подрядчиками</li>
+          <li>Битрикс24</li>
+          <li>Английский B2</li>
+        </ul>
+
+        <p class="ai-line reveal"><strong>Нейросети в работе:</strong> Nano Banana и FLUX — референсы и визуализация концепций; ChatGPT и Claude — идеи, слоганы и тексты презентаций.</p>
+      </div>
+    </section>
+
+    <!-- 5. Опыт -->
+    <section class="section experience" id="experience" aria-labelledby="experience-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Опыт</p>
+          <h2 class="section-title" id="experience-title">2 года 8 месяцев в дизайне</h2>
+        </header>
+
+        <ol class="timeline">
+          <li class="timeline-item reveal">
+            <p class="timeline-date"><time datetime="2025-09">Сентябрь 2025</time> — <time datetime="2026-10">октябрь 2026</time></p>
+            <h3 class="timeline-title">H-ONE, Москва</h3>
+            <p class="timeline-role">Графический дизайнер (мерч и промопродукция)</p>
+            <p>Мерч и промопродукция для корпоративных клиентов: от идей по ТЗ и презентации концепций до макетов к производству и подбора подрядчиков в России и Китае. Проекты для Газпромбанка, Uniel, Комплекса градостроительной политики и строительства Москвы и F6.</p>
+          </li>
+          <li class="timeline-item reveal">
+            <p class="timeline-date"><time datetime="2024-03">Март 2024</time> — <time datetime="2025-09">сентябрь 2025</time></p>
+            <h3 class="timeline-title">Фриланс (самозанятая)</h3>
+            <p class="timeline-role">Графический дизайнер (проектная работа)</p>
+            <p>Брендинговые агентства, производители и продавцы на Wildberries, Ozon и Яндекс Маркете: карточки и инфографика, POS-материалы, адаптации упаковки, допечатная подготовка. Работа по брендбукам, в том числе в команде под руководством арт-директора.</p>
+          </li>
+        </ol>
+
+        <p class="education reveal"><strong>Образование:</strong> НГЛУ им. Н.А. Добролюбова, бакалавр по рекламе и связям с общественностью, 2025 · Skillbox, «Профессия графический дизайнер 2.0», 2025.</p>
+      </div>
+    </section>
+
+    <!-- 6. Как сделан сайт -->
+    <section class="section how" id="how" aria-labelledby="how-title">
+      <div class="container">
+        <div class="how-card reveal">
+          <h2 class="how-title" id="how-title">Как сделан этот сайт</h2>
+          <p>Сайт собран в диалоге с Claude — ИИ-ассистентом от Anthropic. Без конструкторов и шаблонов: HTML, CSS и немного JavaScript.</p>
+          <ol class="how-steps">
+            <li><strong>Бриф</strong> резюме и цели сайта</li>
+            <li><strong>Промпт</strong> структура, дизайн, анимации, доступность</li>
+            <li><strong>Итерации</strong> правки текстов, визуала и адаптива</li>
+            <li><strong>Публикация</strong> код на GitHub, сайт на GitHub Pages</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Контакты -->
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="contact-inner reveal">
+          <p class="eyebrow">Контакты</p>
+          <h2 class="contact-title" id="contact-title">Давайте сделаем мерч, который захочется оставить себе</h2>
+          <p class="contact-lead">Рассматриваю полную занятость в удалённом формате, готова к редким командировкам. Для проектной работы есть самозанятость.</p>
+          <!-- TODO: заменить ссылки на реальные контакты -->
+          <ul class="contact-links">
+            <li><a class="btn btn--primary" href="https://hh.ru/resume/TODO" target="_blank" rel="noopener">Резюме на hh.ru <span class="btn-arrow" aria-hidden="true">↗</span></a></li>
+            <li><a class="btn btn--ghost" href="https://t.me/TODO" target="_blank" rel="noopener">Telegram</a></li>
+            <li><a class="btn btn--ghost" href="mailto:TODO@example.com">TODO@example.com</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span data-year>2026</span> Анна · графический дизайнер</p>
+      <p>Сайт сделан в диалоге с Claude · <a href="#how">как это было</a></p>
+    </div>
+  </footer>
+
+  <dialog class="modal" id="case-modal" aria-labelledby="modal-title">
+    <div class="modal-inner">
+      <button class="modal-close" type="button" data-close aria-label="Закрыть">
+        <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 4l12 12M16 4L4 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <p class="case-type" data-modal-type></p>
+      <h2 class="modal-title" id="modal-title" data-modal-title></h2>
+      <div data-modal-meta></div>
+      <div class="modal-content" data-modal-content></div>
+    </div>
+  </dialog>
+</body>
+</html>
