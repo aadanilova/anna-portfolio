@@ -1,32 +1,90 @@
-/* Портфолио Анны: появление секций, счётчики, tilt карточек, модалка кейсов. Vanilla JS, без зависимостей. */
+/* Портфолио Анны Даниловой: тема, шапка, появление секций, счётчики, tilt карточек, модалка проектов.
+   Vanilla JS без зависимостей. Каждая часть работает независимо и не ломает страницу без JS. */
 (function () {
   'use strict';
 
+  var root = document.documentElement;
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
   var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
 
+  initTheme();
+  initYear();
+  initHeader();
+  initReveal();
+  initTilt();
+  initModal();
+
+  /* ---------- Тема: светлая / тёмная ---------- */
+  function initTheme() {
+    var toggle = document.querySelector('[data-theme-toggle]');
+    if (!toggle) return;
+
+    function current() {
+      return root.dataset.theme || (prefersDark.matches ? 'dark' : 'light');
+    }
+
+    function syncLabel() {
+      toggle.setAttribute('aria-label', current() === 'dark' ? 'Включить светлую тему' : 'Включить тёмную тему');
+    }
+
+    toggle.addEventListener('click', function () {
+      var next = current() === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try {
+        localStorage.setItem('theme', next);
+      } catch (e) {}
+      syncLabel();
+    });
+
+    if (prefersDark.addEventListener) prefersDark.addEventListener('change', syncLabel);
+    syncLabel();
+  }
+
   /* ---------- Год в футере ---------- */
-  var yearEl = document.querySelector('[data-year]');
-  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+  function initYear() {
+    var el = document.querySelector('[data-year]');
+    if (el) el.textContent = String(new Date().getFullYear());
+  }
 
   /* ---------- Шапка: граница после прокрутки ---------- */
-  var header = document.querySelector('[data-header]');
-  if (header) {
-    var onScroll = function () {
+  function initHeader() {
+    var header = document.querySelector('[data-header]');
+    if (!header) return;
+    function onScroll() {
       header.classList.toggle('is-scrolled', window.scrollY > 8);
-    };
+    }
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
   }
 
-  /* ---------- Задержки для каскадного появления ---------- */
-  document.querySelectorAll('[data-stagger]').forEach(function (list) {
-    Array.prototype.forEach.call(list.children, function (child, i) {
-      child.style.setProperty('--i', String(i % 6));
+  /* ---------- Появление при скролле + счётчики ---------- */
+  function initReveal() {
+    document.querySelectorAll('[data-stagger]').forEach(function (list) {
+      Array.prototype.forEach.call(list.children, function (child, i) {
+        child.style.setProperty('--i', String(i % 6));
+      });
     });
-  });
 
-  /* ---------- Счётчики ---------- */
+    var items = document.querySelectorAll('.reveal');
+
+    if (!('IntersectionObserver' in window)) {
+      items.forEach(function (el) { el.classList.add('is-visible'); });
+      return;
+    }
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        entry.target.querySelectorAll('[data-count]').forEach(animateCount);
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+
+    items.forEach(function (el) { observer.observe(el); });
+  }
+
   var formatter = new Intl.NumberFormat('ru-RU');
 
   function renderCount(el, value) {
@@ -44,46 +102,19 @@
     var duration = 1400;
     var start = null;
     renderCount(el, 0);
-    function step(ts) {
+    window.requestAnimationFrame(function step(ts) {
       if (start === null) start = ts;
       var t = Math.min((ts - start) / duration, 1);
-      var eased = 1 - Math.pow(1 - t, 3);
-      renderCount(el, Math.round(target * eased));
+      renderCount(el, Math.round(target * (1 - Math.pow(1 - t, 3))));
       if (t < 1) window.requestAnimationFrame(step);
-    }
-    window.requestAnimationFrame(step);
-  }
-
-  /* ---------- Появление при скролле ---------- */
-  var revealEls = document.querySelectorAll('.reveal');
-
-  function showAll() {
-    revealEls.forEach(function (el) { el.classList.add('is-visible'); });
-    document.querySelectorAll('[data-count]').forEach(function (el) {
-      renderCount(el, parseInt(el.dataset.count, 10));
     });
   }
 
-  if (!('IntersectionObserver' in window)) {
-    showAll();
-  } else {
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        var el = entry.target;
-        el.classList.add('is-visible');
-        el.querySelectorAll('[data-count]').forEach(animateCount);
-        observer.unobserve(el);
-      });
-    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
-
-    revealEls.forEach(function (el) { observer.observe(el); });
-  }
-
-  /* ---------- Tilt + лёгкий параллакс картинки ---------- */
+  /* ---------- Tilt карточек + лёгкий параллакс картинки ---------- */
   function initTilt() {
     document.querySelectorAll('[data-tilt]').forEach(function (card) {
       var frame = null;
+
       card.addEventListener('pointermove', function (e) {
         if (reduceMotion.matches || !finePointer.matches) return;
         var rect = card.getBoundingClientRect();
@@ -98,6 +129,7 @@
           card.style.setProperty('--py', (-y * 10).toFixed(1) + 'px');
         });
       });
+
       card.addEventListener('pointerleave', function () {
         if (frame) window.cancelAnimationFrame(frame);
         card.classList.remove('is-tilting');
@@ -107,80 +139,77 @@
       });
     });
   }
-  initTilt();
 
-  /* ---------- Модалка кейса ---------- */
-  var modal = document.getElementById('case-modal');
-  if (!modal || typeof modal.showModal !== 'function') return;
+  /* ---------- Модалка проекта ---------- */
+  function initModal() {
+    var modal = document.getElementById('case-modal');
+    if (!modal || typeof modal.showModal !== 'function') return;
 
-  var modalType = modal.querySelector('[data-modal-type]');
-  var modalTitle = modal.querySelector('[data-modal-title]');
-  var modalMeta = modal.querySelector('[data-modal-meta]');
-  var modalContent = modal.querySelector('[data-modal-content]');
-  var lastTrigger = null;
-
-  function openCase(button) {
-    var card = button.closest('.case');
-    var group = button.closest('.group');
-    if (!card || !group) return;
-    lastTrigger = button;
-
-    modalType.textContent = group.querySelector('.group-title').textContent;
-    modalTitle.textContent = button.textContent;
-
-    modalMeta.replaceChildren(group.querySelector('.group-meta').cloneNode(true));
-
-    var fragment = document.createDocumentFragment();
-    var tpl = card.querySelector('template.case-details');
-    if (tpl) fragment.appendChild(tpl.content.cloneNode(true));
-
-    // Если своей галереи нет — показываем обложку карточки (или её плейсхолдер)
-    var gallery = fragment.querySelector('.modal-gallery');
-    if (!gallery || !gallery.querySelector('img')) {
-      if (gallery) gallery.remove();
-      fragment.appendChild(card.querySelector('.case-media').cloneNode(true));
-    }
-
-    modalContent.replaceChildren(fragment);
-    modal.showModal();
-    modal.scrollTop = 0;
+    var typeEl = modal.querySelector('[data-modal-type]');
+    var titleEl = modal.querySelector('[data-modal-title]');
+    var metaEl = modal.querySelector('[data-modal-meta]');
+    var contentEl = modal.querySelector('[data-modal-content]');
     var closeBtn = modal.querySelector('[data-close]');
-    if (closeBtn) closeBtn.focus();
-  }
+    var lastTrigger = null;
 
-  function closeModal() {
-    if (modal.open) modal.close();
-  }
+    function open(button) {
+      var card = button.closest('.case');
+      var group = button.closest('.group');
+      if (!card || !group) return;
+      lastTrigger = button;
 
-  document.querySelectorAll('.case-open').forEach(function (button) {
-    button.addEventListener('click', function () { openCase(button); });
-  });
+      typeEl.textContent = group.querySelector('.group__title').textContent;
+      titleEl.textContent = button.textContent;
+      metaEl.replaceChildren(group.querySelector('.group__meta').cloneNode(true));
 
-  modal.addEventListener('click', function (e) {
-    if (e.target === modal || e.target.closest('[data-close]')) closeModal();
-  });
+      var fragment = document.createDocumentFragment();
+      var tpl = card.querySelector('template.case__details');
+      if (tpl) fragment.appendChild(tpl.content.cloneNode(true));
 
-  modal.addEventListener('close', function () {
-    modalContent.replaceChildren();
-    if (lastTrigger) lastTrigger.focus();
-  });
+      // Своей галереи нет — показываем обложку карточки (или её плейсхолдер)
+      var gallery = fragment.querySelector('.gallery');
+      if (!gallery || !gallery.querySelector('img')) {
+        if (gallery) gallery.remove();
+        fragment.appendChild(card.querySelector('.case__media').cloneNode(true));
+      }
 
-  // Удержание фокуса внутри модалки (Esc закрывает нативно через событие cancel)
-  modal.addEventListener('keydown', function (e) {
-    if (e.key !== 'Tab') return;
-    var focusable = Array.prototype.filter.call(
-      modal.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'),
-      function (el) { return el.offsetParent !== null || el === document.activeElement; }
-    );
-    if (!focusable.length) return;
-    var first = focusable[0];
-    var last = focusable[focusable.length - 1];
-    if (e.shiftKey && document.activeElement === first) {
-      e.preventDefault();
-      last.focus();
-    } else if (!e.shiftKey && document.activeElement === last) {
-      e.preventDefault();
-      first.focus();
+      contentEl.replaceChildren(fragment);
+      modal.showModal();
+      modal.scrollTop = 0;
+      if (closeBtn) closeBtn.focus();
     }
-  });
+
+    document.querySelectorAll('.case__open').forEach(function (button) {
+      button.addEventListener('click', function () { open(button); });
+    });
+
+    // Закрытие: крестик или клик по подложке (Esc закрывает нативно)
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal || e.target.closest('[data-close]')) modal.close();
+    });
+
+    modal.addEventListener('close', function () {
+      contentEl.replaceChildren();
+      if (lastTrigger) lastTrigger.focus();
+    });
+
+    // Удержание фокуса внутри модалки
+    modal.addEventListener('keydown', function (e) {
+      if (e.key !== 'Tab') return;
+      var focusable = Array.prototype.filter.call(
+        modal.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'),
+        function (el) { return el.offsetParent !== null; }
+      );
+      if (!focusable.length) return;
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    });
+  }
 })();

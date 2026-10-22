@@ -13,7 +13,7 @@ script.js           появление секций, счётчики, tilt ка
 assets/favicon.svg
 assets/og.jpg       превью для соцсетей 1200×630
 assets/ai/          логотипы AI-инструментов (lobehub/icons, MIT)
-assets/clients/     логотипы компаний (пока пусто, на сайте текстовые названия)
+assets/clients/     логотипы компаний
 assets/works/       изображения работ
 ```
 
@@ -23,10 +23,13 @@ assets/works/       изображения работ
 2. Source: **Deploy from a branch**, Branch: **main**, папка **/ (root)** → Save.
 3. Через 1–2 минуты сайт будет по адресу https://hlwktt.github.io/anna-portfolio/
 
-## Логотипы компаний
+## Темы
 
-Положите официальные SVG в `assets/clients/`: `gazprombank.svg`, `chestny-znak.svg`, `stroi-mos.svg`, `f6.svg`, `uniel.svg`.
-Как только файл появится, он заменит текстовое название в блоке «Компании, для которых я работала».
+Светлая и тёмная темы. По умолчанию сайт следует системной настройке, кнопка в шапке переключает тему вручную (выбор запоминается в localStorage).
+
+## Типографика
+
+В текстах после коротких предлогов и союзов стоят неразрывные пробелы (`&nbsp;`), чтобы они не висели в конце строки. При правке текстов сохраняйте это правило.
 
 ## Изображения работ
 
@@ -37,12 +40,11 @@ assets/works/       изображения работ
 | slug | статус |
 |---|---|
 | gpb-constructor | есть |
-| gpb-boardgame | нет изображения |
-| gpb-backpacks | нет изображения |
+| gpb-backpacks | есть |
 | cz-music-boxes, cz-ornaments | есть |
 | moscow-cats | есть |
 | f6-candles, f6-bookends | есть |
-| uniel-tea | нет изображения |
+| uniel-tea | есть |
 | ai-fashion | есть |
 
 После добавления `-01.jpg` пропишите `<img>` в `<template class="case-details">` нужной карточки в `index.html`.
