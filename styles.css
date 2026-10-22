@@ -372,8 +372,8 @@ h3 {
   gap: 0.75rem;
 }
 
-.hero-title > span:first-child {
-  font-size: clamp(3.5rem, 16vw, 9.5rem);
+.hero-name {
+  font-size: clamp(2.75rem, 11.5vw, 7rem);
   line-height: 0.95;
   letter-spacing: -0.04em;
 }
@@ -561,6 +561,87 @@ h3 {
   }
 }
 
+/* ---------- Компании ---------- */
+.clients {
+  padding-block: 0 clamp(3rem, 7vw, 5rem);
+}
+
+.clients-title {
+  margin-bottom: 1.25rem;
+  color: var(--muted);
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.clients-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+@media (min-width: 48rem) {
+  .clients-list {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.client {
+  display: grid;
+  place-items: center;
+  min-height: 5.5rem;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  text-align: center;
+  transition: border-color 0.25s var(--ease);
+}
+
+.client:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 48rem) {
+  .client:last-child:nth-child(odd) {
+    grid-column: auto;
+  }
+}
+
+.client img {
+  max-width: 100%;
+  max-height: 2.5rem;
+  width: auto;
+  filter: grayscale(1);
+  opacity: 0.8;
+  transition: filter 0.3s var(--ease), opacity 0.3s var(--ease);
+}
+
+.client:has(img) .client-name {
+  display: none;
+}
+
+.client-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(0.875rem, 2.4vw, 1rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+@media (hover: hover) {
+  .client:hover {
+    border-color: var(--accent);
+  }
+
+  .client:hover img {
+    filter: none;
+    opacity: 1;
+  }
+}
+
 /* ---------- Цифры ---------- */
 .stats {
   padding-block: 0 var(--section);
@@ -616,12 +697,58 @@ h3 {
   background: var(--surface-2);
 }
 
+.groups {
+  display: grid;
+  gap: clamp(3rem, 7vw, 5rem);
+}
+
+.group-head {
+  display: grid;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+@media (min-width: 56rem) {
+  .group-head {
+    grid-template-columns: 1.3fr 1fr;
+    gap: 3rem;
+    align-items: end;
+  }
+}
+
+.group-context {
+  color: var(--accent);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.group-title {
+  margin-top: 0.5rem;
+  font-size: clamp(1.375rem, 3.6vw, 2.25rem);
+}
+
+.group-desc {
+  margin-top: 0.75rem;
+  color: var(--muted);
+  max-width: 40rem;
+}
+
+.group-meta {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
 .cases {
   display: grid;
   gap: 1.25rem;
 }
 
-@media (min-width: 48rem) {
+@media (min-width: 40rem) {
   .cases {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
@@ -680,7 +807,7 @@ h3 {
 .case-media {
   --ph-hue: 20;
   position: relative;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   display: grid;
   place-items: center;
@@ -738,9 +865,15 @@ h3 {
 }
 
 .case-title {
-  margin-top: 0.5rem;
-  font-size: 1.125rem;
+  font-size: 1.0625rem;
   line-height: 1.3;
+}
+
+.case-desc {
+  margin-top: 0.5rem;
+  color: var(--muted);
+  font-size: 0.9375rem;
+  line-height: 1.5;
 }
 
 /* Вся карточка кликабельна через растянутую кнопку */
@@ -785,6 +918,21 @@ h3 {
 }
 
 /* ---------- Навыки ---------- */
+.skill-groups {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.skill-group-title,
+.sub-title {
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
+}
+
+.sub-title {
+  margin-top: clamp(3rem, 7vw, 4.5rem);
+}
+
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
@@ -834,27 +982,85 @@ h3 {
   line-height: 1.4;
 }
 
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+/* ---------- AI-инструменты ---------- */
+.ai-block {
+  margin-top: clamp(3rem, 7vw, 4.5rem);
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+}
+
+.ai-title {
+  margin-bottom: 1.5rem;
+  font-size: clamp(1.25rem, 3vw, 1.625rem);
+}
+
+.ai-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 1fr));
+  gap: 0.75rem;
+}
+
+.ai-tool {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 1rem;
+  align-items: center;
+  padding: 1.125rem 1.25rem;
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+
+@media (hover: hover) {
+  .ai-tool:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+  }
+}
+
+.ai-logo {
+  grid-row: span 2;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.ai-logo--mono {
+  color: var(--text);
+}
+
+.ai-name {
+  font-weight: 700;
+}
+
+.ai-use {
+  grid-column: 2;
+  color: var(--muted);
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.ai-more {
+  display: grid;
+  gap: 0.75rem;
   margin-top: 1.5rem;
 }
 
-.tags li {
-  padding: 0.4rem 0.9rem;
-  border-radius: 999px;
-  background: var(--surface-2);
-  font-size: 0.9375rem;
+@media (min-width: 56rem) {
+  .ai-more {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
 }
 
-.ai-line {
-  margin-top: 2rem;
-  padding: 1.25rem 1.5rem;
+.ai-more li {
+  padding-left: 1rem;
   border-left: 3px solid var(--accent);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  background: var(--accent-soft);
-  max-width: 52rem;
+  color: var(--muted);
+}
+
+.ai-more strong {
+  color: var(--text);
 }
 
 /* ---------- Опыт ---------- */
@@ -863,37 +1069,34 @@ h3 {
 }
 
 .timeline {
-  position: relative;
   display: grid;
-  gap: 2.5rem;
-  padding-left: 1.75rem;
-  max-width: 52rem;
+  gap: 1.25rem;
 }
 
-.timeline::before {
-  content: "";
-  position: absolute;
-  top: 0.5rem;
-  bottom: 0.5rem;
-  left: 0.3rem;
-  width: 2px;
-  background: var(--line);
+@media (min-width: 56rem) {
+  .timeline {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
 }
 
 .timeline-item {
   position: relative;
+  padding: 1.5rem 1.5rem 1.5rem 2.25rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
 }
 
 .timeline-item::before {
   content: "";
   position: absolute;
-  top: 0.45rem;
-  left: -1.75rem;
-  width: 0.75rem;
-  height: 0.75rem;
+  top: 1.85rem;
+  left: 1rem;
+  width: 0.625rem;
+  height: 0.625rem;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 0 4px var(--bg);
 }
 
 .timeline-date {
@@ -904,7 +1107,7 @@ h3 {
 
 .timeline-title {
   margin-top: 0.25rem;
-  font-size: clamp(1.25rem, 3vw, 1.625rem);
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
 }
 
 .timeline-role {
@@ -913,41 +1116,83 @@ h3 {
   font-weight: 700;
 }
 
-.education {
-  margin-top: 2.5rem;
-  max-width: 52rem;
+.edu-list {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 56rem) {
+  .edu-list {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.edu {
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  background: var(--surface-2);
+}
+
+.edu-meta {
+  color: var(--accent);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.edu-name {
+  margin-top: 0.5rem;
+  font-weight: 700;
+  font-size: 1.0625rem;
+}
+
+.edu-desc {
+  margin-top: 0.25rem;
   color: var(--muted);
 }
 
-.education strong {
-  color: var(--text);
-}
-
 /* ---------- Как сделан сайт ---------- */
-.how {
-  padding-top: 0;
-}
-
 .how-card {
   padding: clamp(1.5rem, 4vw, 2.5rem);
   border: 1px dashed var(--line);
   border-radius: var(--radius);
-  max-width: 52rem;
+}
+
+.how-head {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem 1.25rem;
+  align-items: start;
+}
+
+.how-logo {
+  width: 3rem;
+  height: 3rem;
+}
+
+@media (min-width: 48rem) {
+  .how-logo {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
 }
 
 .how-title {
   margin-bottom: 0.75rem;
-  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  font-size: clamp(1.25rem, 3vw, 1.625rem);
 }
 
-.how-card > p {
+.how-lead {
   color: var(--muted);
+  max-width: 48rem;
 }
 
 .how-steps {
   display: grid;
   gap: 0.75rem;
-  margin-top: 1.5rem;
+  margin-top: 2rem;
   counter-reset: step;
 }
 
@@ -982,6 +1227,7 @@ h3 {
 @media (min-width: 48rem) {
   .how-steps {
     grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
   }
 
   .how-steps li {
@@ -992,6 +1238,11 @@ h3 {
   .how-steps li::before {
     grid-row: auto;
   }
+}
+
+
+.how {
+  padding-top: 0;
 }
 
 /* ---------- Контакты ---------- */
@@ -1053,10 +1304,6 @@ h3 {
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 0.5rem 2rem;
-}
-
-.site-footer a:hover {
-  color: var(--accent);
 }
 
 /* ---------- Модалка ---------- */
@@ -1240,4 +1487,8 @@ h3 {
     opacity: 1 !important;
     transform: none !important;
   }
+}
+
+.nowrap {
+  white-space: nowrap;
 }

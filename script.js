@@ -121,13 +121,14 @@
 
   function openCase(button) {
     var card = button.closest('.case');
-    if (!card) return;
+    var group = button.closest('.group');
+    if (!card || !group) return;
     lastTrigger = button;
 
-    modalType.textContent = card.querySelector('.case-type').textContent;
+    modalType.textContent = group.querySelector('.group-title').textContent;
     modalTitle.textContent = button.textContent;
 
-    modalMeta.replaceChildren(card.querySelector('.case-meta').cloneNode(true));
+    modalMeta.replaceChildren(group.querySelector('.group-meta').cloneNode(true));
 
     var fragment = document.createDocumentFragment();
     var tpl = card.querySelector('template.case-details');
